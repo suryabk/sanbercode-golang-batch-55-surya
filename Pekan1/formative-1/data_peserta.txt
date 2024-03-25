@@ -1,0 +1,11 @@
+Data Peserta Bootcamp Digital Skill - Golang Backend Development
+1. Nama: Surya Bhakti Kusuma
+2. Email: surya27bk@gmail.com
+3. Sistem Operasi yang digunakan: Windows
+4. Akun Github: suryabk
+5. Akun Telegram: kusurya
+6. Role Pekerjaan (BE/FE/DEVOPS/MAHASISWA) : FE/MAHASISWA
+7. Umur: 23
+8. Pernah menggunakan Go? : Tidak
+9. Bahasa Pemrograman yg pernah dipelajari: Javascript/Typescript - Python - PHP - Dart
+10. Pernah membuat REST API? : Tidak
