@@ -110,7 +110,7 @@ func main() {
 		fmt.Printf("Generasi Y (Millenials)")
 	} else if tahunLahir >= 1965 {
 		fmt.Printf("Generasi X")
-	} else if tahunLahir >= 1964 && tahunLahir <= 1944 {
+	} else if tahunLahir <= 1964 && tahunLahir >= 1944 {
 		fmt.Printf("Baby boomer")
 	}
 }
