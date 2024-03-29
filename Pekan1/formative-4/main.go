@@ -22,7 +22,7 @@ func main() {
 	for x := 1; x <= 7; x++ {
 		star := ""
 		for y := 1; y <= x; y++ {
-			star += "*"
+			star += "#"
 		}
 		fmt.Printf("%s\n", star)
 	}
@@ -43,7 +43,7 @@ func main() {
 	sayuran = append(sayuran, "Bayam", "Buncis", "Kangkung", "Kubis", "Seledri", "Tauge", "Timun")
 
 	for i, sayur := range sayuran {
-		fmt.Printf("%d. %s\n", i, sayur)
+		fmt.Printf("%d. %s\n", i+1, sayur)
 	}
 	fmt.Println() //untuk buat baris baru
 
