@@ -2,8 +2,6 @@ package main
 
 import "fmt"
 
-type Hasil struct{ luas, keliling float64 }
-
 func main() {
 	// Soal 1
 	var luasLingkaran float64
