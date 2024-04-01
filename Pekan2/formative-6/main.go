@@ -6,19 +6,28 @@ func main() {
 	// Soal 1
 	var luasLingkaran float64
 	var kelilingLingkaran float64
-	hitungLingkaran(&luasLingkaran, &kelilingLingkaran, 5)
+
+	var jarijari float64
+	jarijari = 5
+
+	hitungLingkaran(&luasLingkaran, &kelilingLingkaran, jarijari)
 	fmt.Printf("Luas Lingkaran : %.2f\n", luasLingkaran)
 	fmt.Printf("keliling Lingkaran : %.2f\n", kelilingLingkaran)
 	fmt.Printf("\n\n")
 
+	//
+	//
 	// Soal 2
 	var sentence string
+
 	introduce(&sentence, "John", "laki-laki", "penulis", "30")
 	fmt.Println(sentence)
 	introduce(&sentence, "Sarah", "perempuan", "model", "28")
 	fmt.Println(sentence)
 	fmt.Printf("\n\n")
 
+	//
+	//
 	// Soal 3
 	var buah = []string{}
 	buahFavorit(&buah, "Jeruk", "Semangka", "Mangga", "Strawberry", "Durian", "Manggis", "Alpukat")
@@ -28,6 +37,8 @@ func main() {
 	}
 	fmt.Printf("\n\n")
 
+	//
+	//
 	// Soal 4
 	var dataFilm = []map[string]string{}
 
@@ -59,9 +70,9 @@ func introduce(sentence *string, name, gender, job, age string) {
 	return
 }
 
-func hitungLingkaran(luasLingkaran, kelilingLingkaran *float64, radius float64) {
+func hitungLingkaran(luas, keliling *float64, radius float64) {
 	var phi float64 = 3.14
-	*luasLingkaran = phi * radius * radius
-	*kelilingLingkaran = phi * radius * 2
+	*luas = phi * radius * radius
+	*keliling = phi * radius * 2
 	return
 }
