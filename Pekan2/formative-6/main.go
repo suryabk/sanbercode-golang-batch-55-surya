@@ -67,12 +67,10 @@ func introduce(sentence *string, name, gender, job, age string) {
 		sapaan = "Bu"
 	}
 	*sentence = fmt.Sprintf("%s %s adalah seorang %s yang berusia %s tahun", sapaan, name, job, age)
-	return
 }
 
 func hitungLingkaran(luas, keliling *float64, radius float64) {
 	var phi float64 = 3.14
 	*luas = phi * radius * radius
 	*keliling = phi * radius * 2
-	return
 }
