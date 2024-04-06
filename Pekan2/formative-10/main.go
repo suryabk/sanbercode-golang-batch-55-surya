@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sort"
+	"sync"
 	"time"
 )
 
@@ -45,6 +46,20 @@ func main() {
 	fmt.Printf("\n\n")
 
 	// Soal 5
+	phones = []string{"Xiaomi", "Asus", "Iphone", "Samsung", "Oppo", "Realme", "Vivo"}
+	sort.Strings(phones)
+
+	var wg sync.WaitGroup
+	wg.Add(len(phones))
+	for i := range phones {
+		go func(i int) {
+			defer wg.Done()
+			time.Sleep(time.Second * time.Duration(i))
+			fmt.Printf("%d. %s\n", i+1, phones[i])
+		}(i)
+	}
+
+	wg.Wait()
 
 	// jawaban Soal 6
 	var movies = []string{"Harry Potter", "LOTR", "SpiderMan", "Logan", "Avengers", "Insidious", "Toy Story"}
