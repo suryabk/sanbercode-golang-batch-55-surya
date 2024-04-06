@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// Soal 1
-
+	defer showKalimat("Golang Backend Development", 2021)
 	// Soal 2
 	defer func() {
 		if r := recover(); r != nil {
@@ -23,7 +23,6 @@ func main() {
 
 	// Soal 3
 	angka := 1
-
 	defer cetakAngka(&angka)
 	tambahAngka(7, &angka)
 	tambahAngka(6, &angka)
@@ -48,15 +47,23 @@ func main() {
 		}
 	}
 	fmt.Printf("\n\n")
-	// Soal 6
 
+	// Soal 5
+
+	// Soal 6
 	var movies = []string{"Harry Potter", "LOTR", "SpiderMan", "Logan", "Avengers", "Insidious", "Toy Story"}
 	moviesChannel := make(chan string)
 	go getMovies(moviesChannel, movies...)
 	for value := range moviesChannel {
 		fmt.Println(value)
 	}
+	fmt.Printf("\n\n")
+}
 
+func showKalimat(word string, year int) {
+	fmt.Println("Jawaban No. 1")
+	fmt.Println(word)
+	fmt.Println(year)
 }
 
 func kelilingSegitigaSamaSisi(sisi int, description bool) string {
@@ -78,7 +85,9 @@ func tambahAngka(nilai int, total *int) {
 }
 
 func cetakAngka(total *int) {
+	fmt.Println("Jawaban no. 3")
 	fmt.Println("Total :", *total)
+	fmt.Printf("\n\n")
 }
 
 func getMovies(ch chan<- string, movies ...string) {
