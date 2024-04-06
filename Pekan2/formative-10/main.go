@@ -7,22 +7,19 @@ import (
 )
 
 func main() {
-	// Soal 1
+	// jawaban Soal 1
 	defer showKalimat("Golang Backend Development", 2021)
-	// Soal 2
-	defer func() {
-		if r := recover(); r != nil {
-			fmt.Println("Panic recovered:", r)
-		}
-	}()
+
+	// jawaban Soal 2
 	fmt.Println(kelilingSegitigaSamaSisi(4, true))
 	fmt.Println(kelilingSegitigaSamaSisi(8, false))
 	fmt.Println(kelilingSegitigaSamaSisi(0, true))
 	fmt.Println(kelilingSegitigaSamaSisi(0, false))
 	fmt.Printf("\n\n")
 
-	// Soal 3
+	// jawaban Soal 3
 	angka := 1
+
 	defer cetakAngka(&angka)
 	tambahAngka(7, &angka)
 	tambahAngka(6, &angka)
@@ -30,7 +27,7 @@ func main() {
 	tambahAngka(9, &angka)
 	fmt.Printf("\n\n")
 
-	// Soal 4
+	// jawaban Soal 4
 	var phones []string
 
 	addPhones(&phones, "Xiaomi", "Asus", "IPhone", "Samsung", "Oppo", "Realme", "Vivo")
@@ -50,7 +47,7 @@ func main() {
 
 	// Soal 5
 
-	// Soal 6
+	// jawaban Soal 6
 	var movies = []string{"Harry Potter", "LOTR", "SpiderMan", "Logan", "Avengers", "Insidious", "Toy Story"}
 	moviesChannel := make(chan string)
 	go getMovies(moviesChannel, movies...)
@@ -69,8 +66,12 @@ func showKalimat(word string, year int) {
 func kelilingSegitigaSamaSisi(sisi int, description bool) string {
 	if sisi == 0 {
 		errMsg := "Maaf anda belum menginput sisi dari segitiga sama sisi\n"
-		return errMsg
-
+		if description {
+			return errMsg
+		} else {
+			defer endApp()
+			panic(errMsg)
+		}
 	}
 	keliling := sisi * 3
 	if description {
@@ -78,6 +79,11 @@ func kelilingSegitigaSamaSisi(sisi int, description bool) string {
 	} else {
 		return fmt.Sprintf("%d\n", keliling)
 	}
+}
+
+func endApp() {
+	message := recover()
+	fmt.Println("Panic Recover :", message)
 }
 
 func tambahAngka(nilai int, total *int) {
