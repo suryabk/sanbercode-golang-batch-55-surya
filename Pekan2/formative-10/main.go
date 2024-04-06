@@ -15,7 +15,6 @@ func main() {
 	fmt.Println(kelilingSegitigaSamaSisi(8, false))
 	fmt.Println(kelilingSegitigaSamaSisi(0, true))
 	fmt.Println(kelilingSegitigaSamaSisi(0, false))
-	fmt.Printf("\n\n")
 
 	// jawaban Soal 3
 	angka := 1
