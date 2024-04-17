@@ -8,12 +8,6 @@ import (
 	"strconv"
 )
 
-type Movie struct {
-	ID    int    `json:"id"`
-	Title string `json:"title"`
-	Year  int    `json:"year"`
-}
-
 type NilaiMahasiswa struct {
 	Nama, MataKuliah, IndeksNilai string
 	Nilai, ID                     uint
@@ -36,7 +30,7 @@ func makeIndeks(nilai int) string {
 }
 
 // jawaban no 2
-func getNilai(w http.ResponseWriter, r *http.Request) {
+func getNilaiMahasiswa(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		mhsNilai := nilaiNilaiMahasiswa
 		dataMovies, err := json.Marshal(mhsNilai)
@@ -54,7 +48,7 @@ func getNilai(w http.ResponseWriter, r *http.Request) {
 }
 
 // Jawaban no 1
-func PostNilai(w http.ResponseWriter, r *http.Request) {
+func PostNilaiMahasiswa(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var Mhs NilaiMahasiswa
 	if r.Method == "POST" {
@@ -90,9 +84,26 @@ func PostNilai(w http.ResponseWriter, r *http.Request) {
 	return
 }
 
+func Auth(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		uname, pwd, ok := r.BasicAuth()
+		if !ok {
+			w.Write([]byte("Username atau Password tidak boleh kosong"))
+			return
+		}
+
+		if uname == "admin" && pwd == "admin" {
+			next.ServeHTTP(w, r)
+			return
+		}
+		w.Write([]byte("Username atau Password tidak sesuai"))
+		return
+	})
+}
+
 func main() {
-	http.HandleFunc("/nilai", getNilai)
-	http.HandleFunc("/post_nilai", PostNilai)
+	http.HandleFunc("/nilai", getNilaiMahasiswa)
+	http.Handle("/post_nilai", Auth(http.HandlerFunc(PostNilaiMahasiswa)))
 	fmt.Println("server running at http://localhost:8080")
 
 	if err := http.ListenAndServe(":8080", nil); err != nil {
